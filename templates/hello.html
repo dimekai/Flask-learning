@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hello template</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <!--Estructuras de control de flask-->
+    {% if user_ip %}
+        <h1> Hello World, my friend. Your IP is {{user_ip}} </h1>
+    {% else %}
+        <h1> There is not an IP </h1>
+        <a href="{{url_for('index') }}">Ir al inicio</a>
+    {% endif %}
+
+    <ul>
+        {% for todo in todos %}
+            <li> {{todo}} </li> 
+        {% endfor %}
+    </ul>
+</body>
+</html>
