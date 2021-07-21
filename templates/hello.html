@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Hello template</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
-    <!--Estructuras de control de flask-->
+<!--Extend templates-->
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+<!--To display 'Bienvenido' and the 'original title' of base.html--> 
+{% block title %} 
+    {{super()}} 
+    Bienvenido
+{% endblock %}
+
+<!--Estructuras de control de flask-->
+
+{% block content %} 
     {% if user_ip %}
         <h1> Hello World, my friend. Your IP is {{user_ip}} </h1>
     {% else %}
@@ -17,8 +20,7 @@
 
     <ul>
         {% for todo in todos %}
-            <li> {{todo}} </li> 
+            {{ macros.render_todo(todo) }}
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
